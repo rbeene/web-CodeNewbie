@@ -48,6 +48,7 @@ CodeNewbie::Application.routes.draw do
   get    '/podcast/new' => 'podcast#new', as: 'new_podcast'
   get    '/podcast/:slug' => 'podcast#show', as: 'podcast'
   post   '/podcast' => 'podcast#create'
+  get    '/podcast/:slug/publish' => 'podcast#publish', as: "publish_podcast"
   
   # picks
 

@@ -37,6 +37,7 @@
           <%= simple_format(guest.bio) if guest.bio.present? %>
         <% end %>
       <% end %>
+    <%= link_to "Publish", publish_podcast_path(@episode) if @episode.draft %>
     </div>
     <div class="small-12 medium-9 large-9 columns pad-left">
       <h2 class="desktop">Ep. <%= @episode.episode_number %> - <%= @episode.name %> <span class="subtitle desktop">  ( <%= guest_name(@episode) %> )</span></h2>

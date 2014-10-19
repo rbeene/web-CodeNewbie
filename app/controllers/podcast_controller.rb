@@ -20,7 +20,23 @@ class PodcastController < ApplicationController
 
   def show
     @episode = Podcast.friendly.find(params[:slug])
-    @episodes = Podcast.where("id != :id", id: @episode.id).limit(3).order("published_on DESC")
+    @episodes = Podcast.where("id != :id", id: @episode.id).limit(3).published
+    if !!@episode.draft && !admin?
+      redirect_to podcasts_path
+    elsif admin? && @episode.draft
+      flash[:notice] = "DRAFT"
+    end
+  end
+
+  def publish
+    @episode = Podcast.friendly.find(params[:slug])
+    @episode.draft = false
+    if @episode.save
+      flash[:notice] = "Successfully published!"
+    else
+      flash[:notice] = "Something went wrong :("
+    end
+    redirect_to podcast_path(@episode)
   end
 
   private

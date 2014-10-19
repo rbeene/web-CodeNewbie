@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20141019022028) do
     t.datetime "updated_at"
   end
 
+  create_table "answers", force: true do |t|
+    t.datetime "date"
+    t.string   "topic"
+    t.string   "flag"
+    t.integer  "tweet_id"
+    t.integer  "question_id"
+    t.string   "author"
+  end
+
+  add_index "answers", ["tweet_id"], name: "index_answers_on_tweet_id", unique: true, using: :btree
+
   create_table "blogs", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -46,6 +57,11 @@ ActiveRecord::Schema.define(version: 20141019022028) do
   end
 
   add_index "challenges", ["slug"], name: "index_challenges_on_slug", unique: true, using: :btree
+
+  create_table "chat_sessions", force: true do |t|
+    t.string   "week"
+    t.datetime "start_date"
+  end
 
   create_table "chats", force: true do |t|
     t.text     "description"
@@ -209,15 +225,56 @@ ActiveRecord::Schema.define(version: 20141019022028) do
     t.datetime "updated_at"
   end
 
+  create_table "oauth_access_grants", force: true do |t|
+    t.integer  "resource_owner_id", null: false
+    t.integer  "application_id",    null: false
+    t.string   "token",             null: false
+    t.integer  "expires_in",        null: false
+    t.text     "redirect_uri",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "revoked_at"
+    t.string   "scopes"
+  end
+
+  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
+
+  create_table "oauth_access_tokens", force: true do |t|
+    t.integer  "resource_owner_id"
+    t.integer  "application_id"
+    t.string   "token",             null: false
+    t.string   "refresh_token"
+    t.integer  "expires_in"
+    t.datetime "revoked_at"
+    t.datetime "created_at",        null: false
+    t.string   "scopes"
+  end
+
+  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
+  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
+  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
+
+  create_table "oauth_applications", force: true do |t|
+    t.string   "name",         null: false
+    t.string   "uid",          null: false
+    t.string   "secret",       null: false
+    t.text     "redirect_uri", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
+
   create_table "picks", force: true do |t|
     t.string   "name"
     t.string   "link"
     t.integer  "podcast_id"
+    t.integer  "author_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "guest_id"
   end
 
+  add_index "picks", ["author_id"], name: "index_picks_on_author_id", using: :btree
   add_index "picks", ["guest_id"], name: "index_picks_on_guest_id", using: :btree
   add_index "picks", ["podcast_id"], name: "index_picks_on_podcast_id", using: :btree
 
@@ -234,6 +291,16 @@ ActiveRecord::Schema.define(version: 20141019022028) do
     t.string   "image_link"
     t.boolean  "draft"
   end
+
+  create_table "questions", force: true do |t|
+    t.datetime "date"
+    t.string   "topic"
+    t.string   "flag"
+    t.integer  "tweet_id"
+    t.integer  "chat_session_id"
+  end
+
+  add_index "questions", ["tweet_id"], name: "index_questions_on_tweet_id", unique: true, using: :btree
 
   create_table "resources", force: true do |t|
     t.string   "name"

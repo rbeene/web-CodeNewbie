@@ -72,6 +72,8 @@ feature "Admin can add a new podcast" do
 
     click_link("View Podcast")
     expect(current_path).to eq(podcast_path(Podcast.find_by(:name => "Episode 1")))
+    expect(Podcast.find_by(:name => "Episode 1").draft).to eq(true)
+    expect(page).to have_content("DRAFT")
 
   end
 
