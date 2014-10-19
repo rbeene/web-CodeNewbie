@@ -42,7 +42,7 @@ class PodcastController < ApplicationController
   private
 
   def podcast_params
-    params.require(:podcast).permit(:name, :description, :published_on, :audio_link, :jw_player_id)
+    params.require(:podcast).permit(:name, :description, :published_on, :audio_link, :jw_player_id, :episode_number)
   end
 
   def guest_params

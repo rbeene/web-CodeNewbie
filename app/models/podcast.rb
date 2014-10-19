@@ -17,7 +17,7 @@ class Podcast < ActiveRecord::Base
   friendly_id :name, :use => :slugged
 
   def self.create_with_guest(params)
-    podcast = Podcast.new(params[:podcast].merge(:draft => true))
+    podcast = Podcast.new(params[:podcast].merge(:draft => true, :jw_player_id => "playerPeurpZliRUxh"))
     if podcast.save
       guest = Guest.sanitize_and_create(params[:guest])
       if guest.save

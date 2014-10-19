@@ -21,7 +21,7 @@ feature "Admin can add a new podcast" do
     fill_in("podcast_description", with: "Best podcast ever.")
     fill_in("podcast_published_on", with: "Sept 4")
     fill_in("podcast_audio_link", with: "http://podcast.mp3")
-    fill_in("podcast_jw_player_id", with: "123")
+    fill_in("podcast_episode_number", with: "3")
     
     fill_in("guest_first_name", with: "Carlos")
     fill_in("guest_full_name", with: "Carlos Lazo")
