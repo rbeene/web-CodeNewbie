@@ -40,6 +40,11 @@ describe Podcast do
       expect(podcast.episode_number).to eq(1)
     end
 
+    it "has a draft stauts" do 
+      podcast.draft = true
+      expect(podcast.draft).to eq(true)
+    end
+
   end
 
   describe "#create_with_guest" do 

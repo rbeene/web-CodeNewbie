@@ -11,13 +11,15 @@ class Podcast < ActiveRecord::Base
 
   after_create :add_activity
 
+  scope :published, -> { where("draft IS false").order("published_on DESC") }
+
   extend FriendlyId
   friendly_id :name, :use => :slugged
 
   def self.create_with_guest(params)
     podcast = Podcast.new(params[:podcast])
     if podcast.save
-      guest = Guest.sanitize_and_create(params[:guest])
+      guest = Guest.sanitize_and_create(params[:guest].merge(:draft => true))
       if guest.save
         ShowGuest.create([
           {:podcast => podcast, :guest => guest},

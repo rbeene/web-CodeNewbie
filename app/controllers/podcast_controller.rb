@@ -2,7 +2,7 @@ class PodcastController < ApplicationController
   before_action :authorize, except: [:index, :show]
 
   def index
-    @episodes = Podcast.all.order("published_on DESC")
+    @episodes = Podcast.published
   end
 
   def new
