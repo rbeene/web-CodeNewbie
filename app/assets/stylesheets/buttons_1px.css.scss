@@ -45,5 +45,18 @@
   position: relative;
 }
 
+.cta-white {
+  background: white;
+  border: 1px solid $lightgray;
+  color: $bright-green;
+  padding: 2px 25px;
+  font-weight: 400;
+}
+
+.cta-white:hover {
+  color: white;
+  background: $bright-green;
+  font-weight: 400;
+}
 
 

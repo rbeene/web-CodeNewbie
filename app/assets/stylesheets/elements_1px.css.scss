@@ -35,3 +35,26 @@
 .six-columns:last-child {
   padding-top: 30px;
 }
+
+.gray-bg {
+  background: $really-light-gray;
+  padding: 20px;
+  p { margin-bottom: 10px; }
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.green-bg {
+  background: #B8E986;
+  padding: 20px 10px 1px 0px;
+}
+
+.pricing-callout .full-border {
+  height: 500px;
+  position: relative;
+}
+
+.pricing-callout .body {
+  padding-top: 25px;
+}
