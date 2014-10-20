@@ -17,3 +17,25 @@ ul.big-list {
     margin: 0 10px 0 -55px;
   }
 }
+
+.white-bullets {
+  padding-left: 0px;
+  
+  li {
+    font-size: 16px;
+    border: none;
+    padding: 0px;
+    margin-bottom: 25px;
+    line-height: 24px;
+  }
+
+  li:before {
+    content: "";
+    background: #FFFFFF;
+    border: 1px solid #979797;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: -20px;
+  }
+}
