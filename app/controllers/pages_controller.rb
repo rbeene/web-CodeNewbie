@@ -17,4 +17,7 @@ class PagesController < ApplicationController
   def get_involved
   end
 
+  def front_end_newbie
+  end
+
 end

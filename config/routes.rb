@@ -87,6 +87,9 @@ CodeNewbie::Application.routes.draw do
   # code
   get   '/challenges/:slug'    => 'challenges#show', as: 'challenge'
 
+  # front-end-newbie
+  get   '/beta'             => 'pages#front_end_newbie', as: 'front_end_newbie'
+
   # signing in stuff
   get   '/beta-login'  => 'pages#beta', as: 'beta'
 
