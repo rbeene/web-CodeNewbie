@@ -88,7 +88,7 @@ CodeNewbie::Application.routes.draw do
   get   '/challenges/:slug'    => 'challenges#show', as: 'challenge'
 
   # signing in stuff
-  get   '/beta'  => 'pages#beta', as: 'beta'
+  get   '/beta-login'  => 'pages#beta', as: 'beta'
 
   # admin panel
   get   '/admin' => 'sessions#admin_new'
