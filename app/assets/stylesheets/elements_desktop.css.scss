@@ -27,5 +27,11 @@
 }
 
 .pad-left { padding-left: 30px; }
-
 .full-padding { padding: 40px; padding-right: 50px; }
+.no-top-pad { padding-top: 0px; }
+
+.gray-bg {
+  height: 470px;
+}
+
+.pricing-callout .gray-bg  { height: auto; }
