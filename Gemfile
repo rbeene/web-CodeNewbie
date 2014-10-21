@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-ruby '2.1.1'
+ruby '2.1.3'
 
 ###################
 # Suspenders Gems #
@@ -56,7 +56,8 @@ group :development, :test do
   gem 'awesome_print'
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
-  gem 'jazz_hands'
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
   gem 'rspec-rails', '>= 2.14'
 end
 
